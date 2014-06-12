@@ -1,0 +1,3 @@
+
+class GenericBoard(object):
+    pass
