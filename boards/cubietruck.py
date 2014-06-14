@@ -2,6 +2,7 @@
 from sunxi import SunxiBoard
 
 class Cubietruck(SunxiBoard):
+    NAME = "Cubietruck"
     DEFAULT_FEX = "templates/cubietruck.fex"
 
     def __init__(self):

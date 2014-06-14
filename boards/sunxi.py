@@ -6,6 +6,8 @@ from generic import GenericBoard
 from menu import choice
 
 class SunxiBoard(GenericBoard):
+    NAME = "SUNXI"
+
     # Resetting such board configuration is not possible
     DEFAULT_FEX = None
 

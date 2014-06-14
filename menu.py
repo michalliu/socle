@@ -4,11 +4,15 @@ try:
     screen = None
     import snack
 except ImportError:
-    print "Could not import snack, are you sure it's installed?"
-    snack = None
+    print "Could not import snack, falling back to newt..."
+    try:
+        import newt as snack
+        print "Could not import newt aswell, are you sure either python-snack or python-newt package is installed?"
+    except ImportError:
+        snack = None
 
 import sys
-from constants import TTY
+from facts import TTY
 
 class CanceledException():
     pass

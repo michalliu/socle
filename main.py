@@ -45,20 +45,25 @@ while True:
         submenu = choice(
             MAINMENU,
             "Main menu",
-            "SoC configuration utility",
+            "SoC configuration utility\nDetected board: " + board.NAME,
             actions=(
                 ("Ok", "ok"),
-                ("Reboot", RebootException),
-                ("Shutdown", ShutdownException),
-                ("Exit", ExitException)
+                ("Reboot", RebootException()),
+                ("Shutdown", ShutdownException()),
+                ("Exit", ExitException())
             )
         )
     except ExitException:
         break
     except RebootException:
+        os.system("reboot")
         break
     except ShutdownException:
+        os.system("shutdown -h now")
         break
-    else:
+
+    try:
         submenu()
+    except CanceledException:
+        pass
 

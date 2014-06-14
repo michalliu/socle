@@ -33,7 +33,10 @@ def reconfigure_timezone():
     os.symlink("/usr/share/zoneinfo/" + superselection + subselection, "/etc/localtime.part")
     os.rename("/etc/localtime.part", "/etc/localtime")
 
-MENU_ENTRIES = (
-    ("Set timezone", reconfigure_timezone),
-)
-
+if os.path.exists("/usr/share/zoneinfo"):
+    MENU_ENTRIES = (
+        ("Set timezone", reconfigure_timezone),
+    )
+else:
+    MENU_ENTRIES = ()
+    print "It seems /usr/share/zoneinfo does not exist, are you sure tzdata package is installed? Disabling timezone selection for now"
