@@ -9,4 +9,4 @@ class ZynqBoard(GenericBoard):
     @classmethod
     def match(cls, e):
         return e.HARDWARE == "Xilinx Zynq Platform"
-    
+

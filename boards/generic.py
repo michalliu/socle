@@ -1,3 +1,8 @@
 
 class GenericBoard(object):
-    pass
+    NAME = "Generic board"
+
+    @classmethod
+    def instantiate(cls, *args):
+        return cls(*args)
+

@@ -27,7 +27,7 @@ LSB_CODENAME = subprocess.check_output(("/usr/bin/lsb_release", "-c", "-s")).str
 # Determine hardware platform
 HARDWARE = None
 cpuinfo = open("/proc/cpuinfo").read()
-m = re.search(r"Hardware\s*:\s*(.+?)\s+", cpuinfo)
+m = re.search(r"Hardware\s*:\s*(.+?)[\n$]", cpuinfo)
 if m:
     HARDWARE, = m.groups()
 
