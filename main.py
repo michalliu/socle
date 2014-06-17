@@ -42,7 +42,7 @@ board = detect_board()
 
 MAINMENU = (
     ("Enable OpenSSH",                  NotImplemented),
-    ("Disable boot to MATE desktop",    NotImplemented),
+    ("Disable boot to desktop",    NotImplemented),
 )
 
 for plugin in plugins:
@@ -66,7 +66,7 @@ def do_halt():
 
 MAINMENU = (
     ("Drop to shell", do_shell),
-) + MAINMENU + (
+) + tuple(sorted(MAINMENU + board.mainmenu())) + (
     ("Reboot", do_reboot),
     ("Shut down", do_halt)
 )

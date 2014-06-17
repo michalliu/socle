@@ -56,8 +56,6 @@ class SunxiBoard(GenericBoard):
     def __init__(self, sys_config_filename=None):
         self.sys_config_filename = sys_config_filename
         self.load(sys_config_filename)
-        
-
 
     @classmethod
     def instantiate(cls):
@@ -66,12 +64,18 @@ class SunxiBoard(GenericBoard):
             ("MicroSD card", "/")
         )
         
-        target = choice(TARGETS,
+        target = choice(targets,
             "Target",
             "With this utility you can configure software intalled on internal NAND or SD card")
 
         return cls()
-        
+
+    def mainmenu(self):
+        return (
+            ("Reconfigure video outputs", self.reconfigure_video_outputs),
+            ("Reconfigure GPIO pins",     self.reconfigure_gpio)
+        )
+
     def load(self, filename):
         if filename.lower().endswith(".bin"):
             fex_filename = filename[:-4] + ".fex"
