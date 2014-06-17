@@ -28,15 +28,15 @@ Following boards will be supported
 
 Debian jessie running on Cubietruck:
 
-![Image of Cubietruck running soc-config](http://lauri.võsandi.com/shared/soc-config/mainmenu-cubietruck.png)
+![Image of Cubietruck running soc-config](http://lauri.vosandi.com/shared/soc-config/mainmenu-cubietruck.png)
 
 Raspbian running on Raspberry Pi:
 
-![Image of Raspberry Pi running soc-config](http://lauri.võsandi.com/shared/soc-config/mainmenu-raspi.png)
+![Image of Raspberry Pi running soc-config](http://lauri.vosandi.com/shared/soc-config/mainmenu-raspi.png)
 
 Ubuntu 12.04 running on ZYBO:
 
-![Image of ZYBO running soc-config](http://lauri.võsandi.com/shared/soc-config/mainmenu-cubietruck.png)
+![Image of ZYBO running soc-config](http://lauri.vosandi.com/shared/soc-config/mainmenu-cubietruck.png)
 
 Goals
 -----
