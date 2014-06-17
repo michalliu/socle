@@ -36,7 +36,7 @@ Raspbian running on Raspberry Pi:
 
 Ubuntu 12.04 running on ZYBO:
 
-![Image of ZYBO running soc-config](http://lauri.vosandi.com/shared/soc-config/mainmenu-cubietruck.png)
+![Image of ZYBO running soc-config](http://lauri.vosandi.com/shared/soc-config/mainmenu-zynq7000.png)
 
 Goals
 -----
