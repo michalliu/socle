@@ -1,5 +1,5 @@
 
-from generic import GenericBoard
+from socle.boards.generic import GenericBoard
 
 class ZynqBoard(GenericBoard):
     NAME = "Zynq-7000"

@@ -46,7 +46,7 @@ def choice(choices, title="Select", help="Select one of following", action_ok="O
     global screen
     prepare()
     choices = tuple(choices)
-    MAX_HEIGHT = 20
+    MAX_HEIGHT = 10
     if not isinstance(screen, NoScreen):
         action, selected = snack.ListboxChoiceWindow(screen,
             title,

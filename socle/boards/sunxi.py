@@ -2,8 +2,8 @@
 import sys
 import ConfigParser
 import subprocess
-from generic import GenericBoard
-from menu import choice
+from socle.boards.generic import GenericBoard
+from socle.menu import choice
 
 class SunxiBoard(GenericBoard):
     NAME = "SUNXI"

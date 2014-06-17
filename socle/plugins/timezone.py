@@ -1,8 +1,8 @@
 
 import os
 import pytz
-from menu import choice
-from atomic import AtomicWrite
+from socle.menu import choice
+from socle.atomic import AtomicWrite
 
 def reconfigure_timezone():
     """

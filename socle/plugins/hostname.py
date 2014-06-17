@@ -1,6 +1,6 @@
 
-from menu import form
-from atomic import AtomicWrite
+from socle.menu import form
+from socle.atomic import AtomicWrite
 
 def reconfigure_hostname():
     current_hostname = open("/etc/hostname").readline().strip()

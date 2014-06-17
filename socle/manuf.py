@@ -3,13 +3,13 @@ import re
 import os
 
 RE_OUI = "([\da-f]{2}:){2}[\da-f]{2}$"
-MANUFACTURERS = {}
+MANUFACTURERS = None
 
 
-
-fh = open(os.path.join(os.path.dirname(__file__), "manuf"))
+# To install manufacturer database: apt-get install libwireshark-data
 
 def load():
+    fh = open("/usr/share/wireshark/manuf")
     global MANUFACTURERS
     while True:
         line = fh.readline()
@@ -31,6 +31,9 @@ def load():
         MANUFACTURERS[oui] = remainder
 
 def get(hardware_address, fallback="Unknown"):
-    if not MANUFACTURERS:
-        load()
+    if MANUFACTURERS == None:
+        try:
+            load()
+        except OSError:
+            MANUFACTURERS = {}
     return MANUFACTURERS.get(hardware_address[:8], fallback)

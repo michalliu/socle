@@ -1,5 +1,5 @@
 
-from sunxi import SunxiBoard
+from socle.boards.sunxi import SunxiBoard
 
 class Cubietruck(SunxiBoard):
     NAME = "Cubietruck"

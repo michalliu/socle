@@ -9,7 +9,7 @@ from datetime import datetime
 from menu import choice, CanceledException
 
 now = datetime.now()
-if now.year < 2015:
+if now.year < 2014:
     print "The clock of the machine seems wrong, hardware is reporting:", now
 
 PLUGINS_PATH = os.path.join(os.path.dirname(__file__), "plugins")
@@ -22,14 +22,14 @@ sys.path.append(BOARDS_PATH)
 plugins = []
 for filename in os.listdir(PLUGINS_PATH):
     if not filename.startswith("_") and filename.endswith(".py"):
-        modname = "plugins.%s" % filename[:-3]
+        modname = "socle.plugins.%s" % filename[:-3]
         plugins.append(importlib.import_module(modname))
 
 # Detect board and populate main menu with platform specific options
 def detect_board():
     for filename in os.listdir(BOARDS_PATH):
         if not filename.startswith("_") and filename.endswith(".py"):
-            mod = importlib.import_module("boards.%s" % filename[:-3])
+            mod = importlib.import_module("socle.boards.%s" % filename[:-3])
             for obj in dir(mod):
                 cls = getattr(mod, obj)
                 if hasattr(cls, "match"):
@@ -72,24 +72,24 @@ MAINMENU = (
 )
 
 
-#class RebootException(CanceledException): pass
-#class ShutdownException(CanceledException): pass
-class ExitException(CanceledException): pass
+def mainloop():
+    while True:
+        try:
+            submenu = choice(
+                MAINMENU,
+                "SoC configuration utility",
+                "Detected board: " + board.NAME + "\n" + 
+                "Running: " + facts.LSB_DISTRIBUTION + " " + facts.LSB_RELEASE + " (" + facts.LSB_CODENAME + ")",
+                action_cancel="Exit"
+            )
+        except CanceledException:
+            break
 
-while True:
-    try:
-        submenu = choice(
-            MAINMENU,
-            "SoC configuration utility",
-            "Detected board: " + board.NAME + "\n" + 
-            "Running: " + facts.LSB_DISTRIBUTION + " " + facts.LSB_RELEASE + " (" + facts.LSB_CODENAME + ")",
-            action_cancel="Exit"
-        )
-    except CanceledException:
-        break
+        try:
+            submenu()
+        except CanceledException:
+            pass
 
-    try:
-        submenu()
-    except CanceledException:
-        pass
 
+if __name__ == "__main__":
+    mainloop()

@@ -1,5 +1,5 @@
 
-from generic import GenericBoard
+from socle.boards.generic import GenericBoard
 
 class RaspberryPi(GenericBoard):
     NAME = "Raspberry Pi"
