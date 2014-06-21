@@ -106,9 +106,9 @@ def run_debootstrap(rootfs_path, script, arch, subarch):
     # If architecture differs then it is actually needed
     if facts.ARCH != arch:
         qemu_system = "/usr/bin/qemu-system-" + arch + "-static"
-        print "QEMU required for second stage debootstrap"
+        print "Host is", facts.ARCH, "and target is", arch, "so QEMU is required for second stage debootstrap"
         if not os.path.exists(qemu_system):
-            raise RuntimeErrot("Could not find " + qemu_system)
+            raise RuntimeError("Could not find " + qemu_system)
         print "Found binary at", qemu_system
 
     # Run first stage debootstrap
@@ -223,19 +223,17 @@ def build_profile():
         "Select profile to build image"
     )
     
-    
+def mainloop():
+    MAINMENU = (
+        ("Use build profile",                build_profile),
+        ("Build custom root filesystem",    build_root_filesystem),
+        ("Clone root filesystem",           clone_root_filesystem),
+        ("Enter chroot",                    enter_chroot),
+        ("Build custom kernel",             build_kernel),
+        ("Build custom bootloader",         build_bootloader),
+        ("Build image",                     build_image),
+    )
 
-MAINMENU = (
-    ("Use build profile",                build_profile),
-    ("Build custom root filesystem",    build_root_filesystem),
-    ("Clone root filesystem",           clone_root_filesystem),
-    ("Enter chroot",                    enter_chroot),
-    ("Build custom kernel",             build_kernel),
-    ("Build custom bootloader",         build_bootloader),
-    ("Build image",                     build_image),
-)
-
-if __name__ == "__main__":
     for path in SOCLE_ROOT_FILESYSTEMS, SOCLE_CHROOTS:
         if not os.path.exists(path):
             os.makedirs(path)
@@ -249,3 +247,6 @@ if __name__ == "__main__":
             action()
         except CanceledException:
             break
+
+if __name__ == "__main__":
+    mainloop()

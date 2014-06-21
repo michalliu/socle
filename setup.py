@@ -13,9 +13,8 @@ setup(
     package_data={"socle":[]},
     data_files=[
         ("", ["README.rst"]),
-        ("socle.boards", ["socle/manuf"]),
     ],
-    scripts = ["misc/socle"],
+    scripts = ["misc/soc-config", "misc/soc-build"],
     license='MIT',
     long_description=open('README.rst').read(),
 )
